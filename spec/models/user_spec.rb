@@ -1,5 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe User do
+
+  describe 'associations' do
+    it { is_expected.to have_many :rides }
+  end
 end

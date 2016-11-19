@@ -1,1 +1,23 @@
-h1 Rides
+.container-fluid
+  h1 All Rides
+  .row
+    .col-md-12
+      table.table.table-condensed
+        thead
+          tr
+            th Date        
+            th Start Address
+            th Destination Address
+            th Distance
+            th Payment Amount
+        tbody
+          - @rides.each do |ride|
+            tr
+              td= ride.date
+              td= ride.start_address
+              td= ride.destination_address
+              td= ride.distance
+              td= ride.payment_amount
+= link_to 'Add New Ride', new_ride_path, class: 'btn btn-md btn-primary'
+
+
