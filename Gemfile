@@ -10,6 +10,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'devise', '~> 4.2'
+gem "slim-rails"
+gem 'twitter-bootstrap-rails'
+gem 'devise-bootstrap-views'
 
 
 group :development, :test do
