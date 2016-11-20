@@ -15,6 +15,7 @@ gem "slim-rails"
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'httparty', '~> 0.13.7'
+gem 'addressable'
 
 
 group :development, :test do

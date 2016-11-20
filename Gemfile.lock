@@ -229,6 +229,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   byebug
   capybara
   coffee-rails (~> 4.2)
