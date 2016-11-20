@@ -39,5 +39,8 @@
               td= number_to_human(ride.sum_distance, units: :distance) 
               td= number_to_human(ride.avg_distance, units: :distance)  
               td= number_to_currency(ride.avg_payment_amount, locale: :en, format: "%n %u") 
+              td= ride.company_ids.map {|company_id| Company.find(company_id).name }.join(", ")
+
+
 
 
