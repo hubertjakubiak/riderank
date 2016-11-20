@@ -19,7 +19,7 @@
   .field.form-group
     = f.label :company
     br
-    = f.collection_select(:company_id, Company.all, :id, :name, {prompt: true}, {class: 'form-control'})
+    = f.collection_select(:company_id, Company.all, :id, :name, {prompt: true}, {class: 'form-control', id: 'company-select'})
   .actions
     = f.submit class: 'btn btn-primary'
 

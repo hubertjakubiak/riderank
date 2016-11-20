@@ -6,6 +6,8 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
@@ -18,6 +20,8 @@ RSpec.configure do |config|
   config.after(:each) { DatabaseCleaner.clean }
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.include Features::SessionHelpers, type: :feature
+  config.include FactoryGirl::Syntax::Methods
 end
 
 Shoulda::Matchers.configure do |config|
@@ -28,4 +32,8 @@ Shoulda::Matchers.configure do |config|
     with.library :action_controller
     with.library :rails
   end
+end
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
