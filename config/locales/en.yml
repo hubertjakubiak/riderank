@@ -21,3 +21,23 @@
 
 en:
   hello: "Hello world"
+  distance:
+    centi:
+      one: "cm"
+      other: "cm"
+    unit:
+      one: "m"
+      other: "m"
+    thousand:
+      one: "km"
+      other: "km"
+    billion: "gazillion-distance"
+  number:
+    currency:
+      format:
+        unit: 'EUR'
+        delimiter: ','
+        separator: '.'
+        precision: 2
+        format: '%u%n'
+

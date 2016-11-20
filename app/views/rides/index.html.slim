@@ -10,14 +10,34 @@
             th Destination Address
             th Distance
             th Payment Amount
+            th Company
         tbody
           - @rides.each do |ride|
             tr
               td= ride.date
               td= ride.start_address
               td= ride.destination_address
-              td= ride.distance
-              td= ride.payment_amount
-= link_to 'Add New Ride', new_ride_path, class: 'btn btn-md btn-primary'
+              td= number_to_human(ride.distance, units: :distance)  
+              td= number_to_currency(ride.payment_amount, locale: :en, format: "%n %u") 
+              td= ride.company.name
+    = link_to 'Add New Ride', new_ride_path, class: 'btn btn-md btn-primary'
+  h1 Rides Summary
+  .row
+    .col-md-12
+      table.table.table-condensed
+        thead
+          tr
+            th Date        
+            th Ride Sum
+            th Avg. ride
+            th Avg. price
+            th Taxis
+        tbody
+          - @rides_summary.each do |ride|
+            tr
+              td= ride.date
+              td= number_to_human(ride.sum_distance, units: :distance) 
+              td= number_to_human(ride.avg_distance, units: :distance)  
+              td= number_to_currency(ride.avg_payment_amount, locale: :en, format: "%n %u") 
 
 

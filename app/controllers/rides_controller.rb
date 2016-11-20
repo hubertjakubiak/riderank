@@ -3,7 +3,8 @@ class RidesController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @rides = current_user.rides
+    @rides = current_user.rides.includes(:company)
+    @rides_summary = Ride.select("date, AVG(distance) as avg_distance, SUM(distance) as sum_distance, AVG(payment_amount) as avg_payment_amount").group(:date).order(date: :desc)
   end
 
   def new
@@ -44,6 +45,6 @@ class RidesController < ApplicationController
   end
 
   def ride_params
-    params.require(:ride).permit(:date, :start_address, :destination_address, :payment_amount)
+    params.require(:ride).permit(:date, :start_address, :destination_address, :payment_amount, :company_id)
   end
 end

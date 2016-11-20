@@ -1,5 +1,6 @@
 class Ride < ActiveRecord::Base
   belongs_to :user
+  belongs_to :company
 
   validates :start_address, presence: true
   validates :destination_address, presence: true
@@ -13,7 +14,7 @@ class Ride < ActiveRecord::Base
     uri = Addressable::URI.parse(encoded_url)
     response = HTTParty.get(uri)
     json = JSON.parse(response.body)
-    distance = json['routes'][0]['legs'][0]['distance']['text']
+    distance = json['routes'][0]['legs'][0]['distance']['value']
     self.distance = distance
   end
 end
