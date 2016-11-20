@@ -4,7 +4,7 @@ class RidesController < ApplicationController
   
   def index
     @rides = current_user.rides.includes(:company)
-    @rides_summary = Ride.select("date, ARRAY_AGG(company_id) as company_ids, AVG(distance) as avg_distance, SUM(distance) as sum_distance, AVG(payment_amount) as avg_payment_amount").group(:date).order(date: :desc)
+    @rides_summary = Ride.select("date, ARRAY_AGG(DISTINCT company_id) as company_ids, AVG(distance) as avg_distance, SUM(distance) as sum_distance, AVG(payment_amount) as avg_payment_amount").group(:date).order(date: :desc)
   end
 
   def new
