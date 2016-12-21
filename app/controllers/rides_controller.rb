@@ -8,13 +8,12 @@ class RidesController < ApplicationController
   end
 
   def new
-    @ride = Ride.new
+    @form = RideForm.new
   end
 
   def create
-    @ride = Ride.new(ride_params)
-    @ride.user = current_user
-    if @ride.save
+    @form = RideForm.new(ride_params.merge!(current_user: current_user))
+    if @form.save
       redirect_to root_path, notice: 'Ride was successfully created.'
     else
       render :new
@@ -45,6 +44,6 @@ class RidesController < ApplicationController
   end
 
   def ride_params
-    params.require(:ride).permit(:date, :start_address, :destination_address, :payment_amount, :company_id)
+    params.require(:ride_form).permit(:date, :start_address, :destination_address, :payment_amount, :company_id)
   end
 end

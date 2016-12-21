@@ -1,5 +1,5 @@
-= form_for(@ride) do |f|
-  = render partial: 'shared/errors', locals: {obj: @ride}
+= form_for @form, url: rides_path, method: :post do |f|
+  = render partial: 'shared/errors', locals: {obj: @form}
   .field.form-group
     = f.label :date
     br
