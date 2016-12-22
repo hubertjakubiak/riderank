@@ -2,7 +2,7 @@ class RideForm
   include ActiveModel::Model
   attr_accessor :date, :start_address, :destination_address, :payment_amount, :company_id, :current_user
 
-  validates :start_address, :destination_address, :payment_amount, presence: true
+  validates :date, :company_id, :start_address, :destination_address, :payment_amount, presence: true
 
   validate :distance_checker_response
 
