@@ -22,6 +22,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include Features::SessionHelpers, type: :feature
   config.include FactoryGirl::Syntax::Methods
+  config.include(Shoulda::Matchers::ActiveModel, type: :model)
+  config.include(Shoulda::Matchers::ActiveRecord, type: :model)
 end
 
 Shoulda::Matchers.configure do |config|
