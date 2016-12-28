@@ -26,6 +26,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'factory_girl_rails'
+  gem 'pry'
 end
 
 group :test do
